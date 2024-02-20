@@ -1,8 +1,10 @@
 package com.robertorebolledonaharro.bichoapi.user.dto;
 
+import com.robertorebolledonaharro.bichoapi.user.validator.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@ValidPassword
 public record CreateUserRequest(
 
         @NotNull(message = "username can`t be null")
