@@ -32,7 +32,7 @@ public class Media {
     private UUID id;
 
     @Lob
-    private byte[] archive;
+    private String archive;
 
     private String article;
 
