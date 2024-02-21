@@ -31,7 +31,6 @@ public class Media {
     @Column(columnDefinition = "uuid")
     private UUID id;
 
-    @Lob
     private String archive;
 
     private String article;

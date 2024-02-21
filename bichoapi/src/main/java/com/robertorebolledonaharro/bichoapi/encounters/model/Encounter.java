@@ -45,14 +45,17 @@ public class Encounter {
 
     private LocalDate date;
 
-    @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "encounter_")
-    private Set<Media> media = new LinkedHashSet<>();
+    private String description;
+
+
 
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "user_data_id")
     private UserData userData;
+
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Media> medias = new LinkedHashSet<>();
 
 }

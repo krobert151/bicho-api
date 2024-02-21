@@ -40,7 +40,6 @@ public class SavedList {
 
     @ToString.Exclude
     @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "saved_list_")
     private List<Specie> species = new ArrayList<>();
 
 }
