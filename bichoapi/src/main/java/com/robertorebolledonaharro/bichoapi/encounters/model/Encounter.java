@@ -47,7 +47,7 @@ public class Encounter {
 
     private String description;
 
-
+    private int likes;
 
     @ToString.Exclude
     @ManyToOne

@@ -23,9 +23,9 @@ insert into specie(danger,type,id,media_id,scientific_name,description) values (
 insert into specie(danger,type,id,media_id,scientific_name,description) values (5,7,'80d768ef-831a-4cfe-9426-fda1eb456464','80d768ff-6543-4cfe-94e6-fda1eb4452a6','Gineta','una gineta to wapa');
 insert into specie(danger,type,id,media_id,scientific_name,description) values (0,9,'80d768ef-831a-4cfe-9426-fda1eb490464','80d768af-6543-4cfe-94e6-fda1eb4452a6','Araña Lobo','una araña to wapa');
 
-insert into encounter(id,date,specie_id,user_data_id,location,description) values ('80d768ef-871a-4cfe-9426-fda1eb490464','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion');
-insert into encounter(id,date,specie_id,user_data_id,location,description) values ('80d768ef-871a-4cfe-9426-fda1eb490455','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb444464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion');
-insert into encounter(id,date,specie_id,user_data_id,location,description) values ('80d768ef-871a-4cfe-9426-fda1eb490495','12-12-2012','80d768ef-831a-4cfe-9426-fda1eb456464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion');
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490464','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',50);
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490455','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb444464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',40);
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490495','12-12-2012','80d768ef-831a-4cfe-9426-fda1eb456464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',30);
 
 insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe-9426-fda1eb490464','80d768ef-6543-4cfe-94e6-fda1eb4452a6');
 insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe-9426-fda1eb490455','80d768af-6543-4cfe-94e6-fda1eb4452a6');
