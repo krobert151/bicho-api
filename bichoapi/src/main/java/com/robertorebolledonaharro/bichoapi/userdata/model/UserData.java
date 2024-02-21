@@ -47,21 +47,17 @@ public class UserData {
     @OneToMany(mappedBy = "userData", orphanRemoval = true)
     private List<Encounter> articles = new ArrayList<>();
 
-    @ToString.Exclude
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "user_data_")
-    private List<SavedList> savedLists = new ArrayList<>();
+
 
     @ToString.Exclude
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "profile_photo_id")
     private Media profilePhoto;
 
+    private int exp;
+
     @ToString.Exclude
-    @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "level_id", nullable = false)
-    private Level level;
-
-
+    @OneToMany(orphanRemoval = true)
+    private List<SavedList> savedLists = new ArrayList<>();
 
 }

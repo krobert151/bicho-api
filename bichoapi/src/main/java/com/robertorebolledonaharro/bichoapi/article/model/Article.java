@@ -35,9 +35,6 @@ public class Article {
     @Column(unique = true)
     private String title;
 
-    private Set<TypeOfArticle> typeOfArticles = new HashSet<>();
-
-    @Lob
     private String text;
 
     private boolean approved;
@@ -53,5 +50,9 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "user_data_id")
     private UserData userData;
+
+    @Enumerated
+    @Column(name = "type")
+    private TypeOfArticle typeOfArticle;
 
 }

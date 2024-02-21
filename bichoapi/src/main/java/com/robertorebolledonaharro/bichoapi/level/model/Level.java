@@ -1,9 +1,6 @@
 package com.robertorebolledonaharro.bichoapi.level.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -16,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 @Entity
+@Table(name = "level_table")
 public class Level {
 
     @Id
@@ -32,7 +30,7 @@ public class Level {
     )
     @Column(columnDefinition = "uuid")
     private UUID id;
-
+    @Column(name = "level_nevel")
     private int level;
 
     private int fromExp;
