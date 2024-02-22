@@ -53,8 +53,7 @@ public class Specie {
     @JoinColumn(name = "media_id")
     private Media media;
 
-    @Enumerated
-    @Column(name = "type")
-    private Type type;
+
+    private String type;
 
 }

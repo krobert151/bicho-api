@@ -11,9 +11,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
-public interface SpecieRepository extends JpaRepository<Specie, UUID> {
+public interface SpecieRepository extends JpaRepository<Specie, UUID>, JpaSpecificationExecutor<Specie> {
 
     @Query("""
             SELECT new com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO(
