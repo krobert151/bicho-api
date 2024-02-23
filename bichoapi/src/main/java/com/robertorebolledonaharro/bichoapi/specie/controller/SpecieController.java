@@ -134,8 +134,17 @@ public class SpecieController {
 
     })
     @GetMapping("/allspecies")
-    public ResponseEntity<List<SpecieDTO>>findAllByCriteria(@RequestParam(value = "search", required = false, defaultValue = "") String search){
-        return ResponseEntity.ok(specieService.findAllByAdvPredicate(search));
+    public ResponseEntity<List<SpecieDTO>>findAllByCriteria(
+            @RequestParam(value = "search", required = false) String search,
+            @RequestParam(value = "c", required = false, defaultValue = "10") int count,
+            @RequestParam(value = "p", required = false, defaultValue = "0") int page
+    ){
+        if(search == null){
+            return ResponseEntity.ok(specieService.findAll(page,count));
+        }else{
+            return ResponseEntity.ok(specieService.findAllByAdvPredicate(search));
+
+        }
     }
 
 

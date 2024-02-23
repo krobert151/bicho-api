@@ -38,6 +38,21 @@ public class SpecieService {
 
     }
 
+    public List<String> findAllSpeciesScientificName(){
+        return repository.findScientificName();
+
+    }
+
+    public List<SpecieDTO> findAll(int page, int count){
+        Pageable pageable = PageRequest.of(page,count);
+        Page<SpecieDTO> specieDTOPage = repository.findSpeciesDtoPageable(pageable);
+        if(specieDTOPage.hasContent()){
+            return specieDTOPage.getContent();
+
+        }else {
+            throw new SpecieNotFoundException("No Species was found on page "+page);
+        }
+    }
 
     public List<SpecieDTO> findAllByAdvPredicate(String search) {
         CriteriaParser parser = new CriteriaParser();
