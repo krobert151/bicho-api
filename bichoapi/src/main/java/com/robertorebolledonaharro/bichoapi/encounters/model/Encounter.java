@@ -53,7 +53,7 @@ public class Encounter {
     private UserData userData;
 
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Media> medias = new ArrayList<>();
 
 }
