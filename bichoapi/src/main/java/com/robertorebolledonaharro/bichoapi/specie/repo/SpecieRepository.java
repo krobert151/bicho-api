@@ -17,7 +17,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface SpecieRepository extends JpaRepository<Specie, UUID>, JpaSpecificationExecutor<Specie> {
 
-    List<String> findScientificName();
+
 
     @Query("""
             SELECT new com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO(

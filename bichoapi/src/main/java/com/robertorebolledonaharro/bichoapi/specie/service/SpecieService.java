@@ -38,11 +38,6 @@ public class SpecieService {
 
     }
 
-    public List<String> findAllSpeciesScientificName(){
-        return repository.findScientificName();
-
-    }
-
     public List<SpecieDTO> findAll(int page, int count){
         Pageable pageable = PageRequest.of(page,count);
         Page<SpecieDTO> specieDTOPage = repository.findSpeciesDtoPageable(pageable);
