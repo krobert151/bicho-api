@@ -1,5 +1,6 @@
 package com.robertorebolledonaharro.bichoapi.specie.repo;
 
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
 import com.robertorebolledonaharro.bichoapi.specie.model.Specie;
 import org.springframework.data.domain.Page;
@@ -11,9 +12,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
-public interface SpecieRepository extends JpaRepository<Specie, UUID> {
+public interface SpecieRepository extends JpaRepository<Specie, UUID>, JpaSpecificationExecutor<Specie> {
+
+
 
     @Query("""
             SELECT new com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO(
@@ -25,6 +29,17 @@ public interface SpecieRepository extends JpaRepository<Specie, UUID> {
             WHERE e.danger >2
             """)
     Page<SpecieSimpleDTO> findSpeciesInDangerOfExtintion(Pageable pageable);
+
+    @Query("""
+            SELECT new com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO(
+                e.id,
+                m.archive,
+                e.scientificName,
+                e.type
+                )FROM Specie e
+            LEFT JOIN e.media as m
+            """)
+    Page<SpecieDTO> findSpeciesDtoPageable(Pageable pageable);
 
     Optional<Specie> findByScientificName(String name);
 
