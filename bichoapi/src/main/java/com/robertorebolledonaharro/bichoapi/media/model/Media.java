@@ -1,10 +1,13 @@
 package com.robertorebolledonaharro.bichoapi.media.model;
 
+import com.robertorebolledonaharro.bichoapi.encounters.model.Encounter;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
