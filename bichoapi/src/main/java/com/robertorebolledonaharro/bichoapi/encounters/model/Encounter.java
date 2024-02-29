@@ -9,9 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -50,12 +48,12 @@ public class Encounter {
     private int likes;
 
     @ToString.Exclude
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_data_id")
     private UserData userData;
 
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Media> medias = new LinkedHashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    private List<Media> medias = new ArrayList<>();
 
 }
