@@ -39,6 +39,16 @@ insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe
 insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe-9426-fda1eb490495','80d768ff-6543-4cfe-94e6-fda1eb4452a6');
 
 insert into article(id,approved,specie_, user_data_id,title,text,type) values ('80d768ef-871a-4cfe-9436-fda1eb490495',true,'80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','Titulo wapo','texto wapo',0);
+insert into article(id,approved,specie_, user_data_id,title,text,type) values ('80d768ef-871a-4cfe-9436-fda1eb490492',true,'80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','Titulo wapo2','texto wapo2',1);
+insert into article(id,approved,specie_, user_data_id,title,text,type) values ('80d768ef-871a-4cfe-9436-fda1eb490292',true,'80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','Titulo wapo3','texto wapo2',2);
+insert into article(id,approved,specie_, user_data_id,title,text,type) values ('80d768ef-871a-4cfe-9436-fda1eb490242',false,'80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','Titulo waponanai','texto wapo2',0);
+
+insert into article_medias(medias_id,article_id) values ('80d768ef-6543-4cfe-94e6-fda1eb4452a6','80d768ef-871a-4cfe-9436-fda1eb490495');
+insert into article_medias(medias_id,article_id) values ('80d768af-6543-4cfe-94e6-fda1eb4452a6','80d768ef-871a-4cfe-9436-fda1eb490495');
+insert into article_medias(medias_id,article_id) values ('80d768ff-6543-4cfe-94e6-fda1eb4452a6','80d768ef-871a-4cfe-9436-fda1eb490492');
+insert into article_medias(medias_id,article_id) values ('80d768ff-6543-4cfe-94e6-fda1eb4455a6','80d768ef-871a-4cfe-9436-fda1eb490292');
+
+
 
 insert into saved_list(id,title,description) values ('80d768ef-971a-4cfe-9436-fda1eb490495','lista wapa','lista wapa molona');
 

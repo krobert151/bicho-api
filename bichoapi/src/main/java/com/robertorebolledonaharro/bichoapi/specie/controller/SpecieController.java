@@ -1,16 +1,14 @@
 package com.robertorebolledonaharro.bichoapi.specie.controller;
 
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDetailsDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
 import com.robertorebolledonaharro.bichoapi.specie.error.SpecieNotFoundException;
 import com.robertorebolledonaharro.bichoapi.specie.service.SpecieService;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -20,6 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -145,6 +144,13 @@ public class SpecieController {
             return ResponseEntity.ok(specieService.findAllByAdvPredicate(search));
 
         }
+    }
+
+    @GetMapping("/speciebyid/{id}")
+    public ResponseEntity<SpecieDetailsDTO> findSpecieById(@PathVariable String id){
+
+        return ResponseEntity.ok(specieService.getDetailsById(UUID.fromString(id)));
+
     }
 
 

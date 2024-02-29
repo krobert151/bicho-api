@@ -1,6 +1,10 @@
 package com.robertorebolledonaharro.bichoapi.specie.service;
 
+import com.robertorebolledonaharro.bichoapi.article.dto.ArticleDTO;
+import com.robertorebolledonaharro.bichoapi.article.model.TypeOfArticle;
+import com.robertorebolledonaharro.bichoapi.media.model.Media;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDetailsDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
 import com.robertorebolledonaharro.bichoapi.specie.error.SpecieNotFoundException;
 import com.robertorebolledonaharro.bichoapi.specie.model.Specie;
@@ -14,8 +18,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -61,7 +68,66 @@ public class SpecieService {
         }
     }
 
+    @Transactional
+    public SpecieDetailsDTO getDetailsById(UUID id){
 
+        Optional<Specie> optionalSpecie = repository.findById(id);
+
+        if(optionalSpecie.isEmpty()){
+            throw new SpecieNotFoundException("No Species was found");
+        }
+
+        Specie specie = optionalSpecie.get();
+
+
+        return SpecieDetailsDTO.builder()
+                .ScientificName(specie.getScientificName())
+                .danger(specie.getDanger().name())
+                .mainPhoto(specie.getMedia().getArchive())
+                .info(
+                        specie.getArticles()
+                                .stream()
+                                .filter(
+                                        x->x.getTypeOfArticle().equals(TypeOfArticle.INFO)&&x.isApproved()
+                                ).map(
+                                        article -> ArticleDTO.builder()
+                                            .title(article.getTitle())
+                                            .description(article.getText())
+                                            .archives(article.getMedias().stream().map(Media::getArchive).toList())
+                                            .build()
+                                ).toList()
+                )
+                .identification(
+
+                        specie.getArticles()
+                                .stream()
+                                .filter(
+                                        x->x.getTypeOfArticle().equals(TypeOfArticle.IDENTIFICATION)&&x.isApproved()
+                                ).map(
+                                        article -> ArticleDTO.builder()
+                                                .title(article.getTitle())
+                                                .description(article.getText())
+                                                .archives(article.getMedias().stream().map(Media::getArchive).toList())
+                                                .build()
+                                ).toList()
+
+                )
+                .cares(
+                        specie.getArticles()
+                                .stream()
+                                .filter(
+                                        x->x.getTypeOfArticle().equals(TypeOfArticle.CARES)&&x.isApproved()
+                                ).map(
+                                        article -> ArticleDTO.builder()
+                                                .title(article.getTitle())
+                                                .description(article.getText())
+                                                .archives(article.getMedias().stream().map(Media::getArchive).toList())
+                                                .build()
+                                ).toList()
+
+                )
+                .build();
+    }
 
 
 
