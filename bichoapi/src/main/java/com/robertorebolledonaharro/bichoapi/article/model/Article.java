@@ -42,9 +42,8 @@ public class Article {
 
 
     @ToString.Exclude
-    @OneToMany
-    @JoinColumn(name = "article_")
-    private Set<Media> media = new LinkedHashSet<>();
+    @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Media> medias = new ArrayList<>();
 
     @ToString.Exclude
     @ManyToOne
