@@ -3,6 +3,7 @@ package com.robertorebolledonaharro.bichoapi.encounters.controller;
 
 import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterDTO;
 import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterSimpleDTO;
+import com.robertorebolledonaharro.bichoapi.encounters.dto.Marker;
 import com.robertorebolledonaharro.bichoapi.encounters.service.EncounterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -82,5 +83,13 @@ public class EncounterController {
             return ResponseEntity.ok(encounterService.findEncounters(page, count));
         }
     }
+
+    @GetMapping("/allmarkers")
+    public ResponseEntity<List<Marker>> findAllMarkers(){
+
+        return ResponseEntity.ok(encounterService.findAllEncountersMarkers());
+
+    }
+
 
 }
