@@ -2,6 +2,7 @@ package com.robertorebolledonaharro.bichoapi.encounters.service;
 
 import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterDTO;
 import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterSimpleDTO;
+import com.robertorebolledonaharro.bichoapi.encounters.dto.Marker;
 import com.robertorebolledonaharro.bichoapi.encounters.error.EncounterNotFoundException;
 import com.robertorebolledonaharro.bichoapi.encounters.model.Encounter;
 import com.robertorebolledonaharro.bichoapi.encounters.repo.EncounterRepository;
@@ -71,8 +72,23 @@ public class EncounterService {
                     }
             ).toList();
         } else {
-            throw new EncounterNotFoundException("No encounters found on page " + page);
+            throw new EncounterNotFoundException("No encounters found on p age " + page);
         }
+    }
+
+    public List<Marker> findAllEncountersMarkers(){
+
+        return  repository.findAll().stream().map(x ->{
+
+            return Marker.builder()
+                    .id(x.getId().toString())
+                    .latitud(x.getLocation().split(",")[0])
+                    .longuitud(x.getLocation().split(",")[1])
+                    .build();
+
+        }).toList();
+
+
     }
 
 

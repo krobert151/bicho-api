@@ -30,9 +30,9 @@ insert into specie(danger,type,id,media_id,scientific_name,description) values (
 
 
 
-insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490464','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',50);
-insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490455','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb444464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',40);
-insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490495','12-12-2012','80d768ef-831a-4cfe-9426-fda1eb456464','80d762ef-831a-4cfe-94e6-fda1eb445564','aqui','descripcion',30);
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490464','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','37.5244947,-6.161443','descripcion',50);
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490455','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb444464','80d762ef-831a-4cfe-94e6-fda1eb445564','37.5389823,-6.1722673','descripcion',40);
+insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490495','12-12-2012','80d768ef-831a-4cfe-9426-fda1eb456464','80d762ef-831a-4cfe-94e6-fda1eb445564','37.5273909,-6.1556216','descripcion',30);
 
 insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe-9426-fda1eb490464','80d768ef-6543-4cfe-94e6-fda1eb4452a6');
 insert into encounter_medias(encounter_id,medias_id) values ('80d768ef-871a-4cfe-9426-fda1eb490455','80d768af-6543-4cfe-94e6-fda1eb4452a6');
