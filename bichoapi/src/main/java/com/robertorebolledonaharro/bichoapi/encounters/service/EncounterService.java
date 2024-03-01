@@ -72,7 +72,7 @@ public class EncounterService {
                     }
             ).toList();
         } else {
-            throw new EncounterNotFoundException("No encounters found on page " + page);
+            throw new EncounterNotFoundException("No encounters found on p age " + page);
         }
     }
 
