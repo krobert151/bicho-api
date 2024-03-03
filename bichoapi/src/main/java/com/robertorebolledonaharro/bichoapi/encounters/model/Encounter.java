@@ -43,6 +43,7 @@ public class Encounter {
 
     private LocalDate date;
 
+    @Column(length = 1000)
     private String description;
 
     private int likes;

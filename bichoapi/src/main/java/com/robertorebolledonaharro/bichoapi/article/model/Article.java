@@ -35,6 +35,7 @@ public class Article {
     @Column(unique = true)
     private String title;
 
+    @Column(length = 1000)
     private String text;
 
     private boolean approved;
