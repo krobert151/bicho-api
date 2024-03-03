@@ -34,7 +34,6 @@ public class Specie {
     @Column(columnDefinition = "uuid")
     private UUID id;
 
-    private String description;
 
     @Column(unique = true)
     private String scientificName;
