@@ -34,5 +34,11 @@ public interface EncounterRepository extends JpaRepository<Encounter, UUID> {
     """)
     Page<EncounterSimpleDTO> findEncounterMostLiked (Pageable pageable);
 
+    @Query("""
+            select e from Encounter e 
+            left join e.userData ud where ud.id= ?1
+            """)
+    Page<Encounter> findAllByUserData(Pageable pageable, UUID userData);
+
 
 }

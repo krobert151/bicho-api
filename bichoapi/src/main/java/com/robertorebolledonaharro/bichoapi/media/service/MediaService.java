@@ -12,7 +12,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class MediaService {
 
-    //private final MediaRepository repository;
 
 
 
