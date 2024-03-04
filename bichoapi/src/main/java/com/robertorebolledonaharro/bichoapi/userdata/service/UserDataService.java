@@ -43,6 +43,7 @@ public class UserDataService {
         return UserDataDTO.builder()
                 .username(user.getUsername())
                 .level(levelDTO.level())
+                .userPhoto(userData.getProfilePhoto().getArchive())
                 .percentExp(levelDTO.percent())
                 .email(user.getEmail())
                 .articles(userData.getArticles().size())

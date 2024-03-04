@@ -79,7 +79,7 @@ insert into specie(danger,type,id,media_id,scientific_name) values (1,'Insect','
 insert into specie(danger,type,id,media_id,scientific_name) values (0,'Lizzard','dd87d249-6946-4628-921e-bf1277fcb100','1559d94c-d5a1-4305-89e1-b3de0fd34b25','Phelusma Quadriocellata');
 
 
-insert into user_data(id,profile_photo_id,current_location,user_id,exp) values ('80d762ef-831a-4cfe-94e6-fda1eb445564','80d768ef-6543-4cfe-94e6-fda1eb4452a6','aqui','80d768ef-831a-4cfe-94e6-fda1eb4452a6',150);
+insert into user_data(id,profile_photo_id,current_location,user_id,exp) values ('80d762ef-831a-4cfe-94e6-fda1eb445564','f0165d2e-9928-4c5f-8f84-50360a457670','aqui','80d768ef-831a-4cfe-94e6-fda1eb4452a6',150);
 
 
 insert into encounter(id,date,specie_id,user_data_id,location,description,likes) values ('80d768ef-871a-4cfe-9426-fda1eb490464','12-12-2012','80d768ef-831a-4cfe-94e6-fda1eb445564','80d762ef-831a-4cfe-94e6-fda1eb445564','37.5244947,-6.121443','Hoy, en el bosque de Roble Viejo, me encontré con un gallipato fascinante (Pleurodeles waltl), notable por su vibrante coloración naranja y negro en su piel moteada.',50);

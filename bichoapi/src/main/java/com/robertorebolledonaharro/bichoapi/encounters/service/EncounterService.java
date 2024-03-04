@@ -131,8 +131,6 @@ public class EncounterService {
                                     .url(medias.get(0).getArchive())
                                     .build();
                         } else {
-                            // Manejar si no hay medios disponibles para el encuentro
-                            // Por ejemplo, puedes devolver una URL predeterminada o un mensaje de error
                             return EncounterDTO.builder()
                                     .id(encounter.getId())
                                     .scientificName(encounter.getSpecie().getScientificName())

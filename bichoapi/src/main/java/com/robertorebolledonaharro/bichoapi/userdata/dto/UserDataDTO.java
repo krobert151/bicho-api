@@ -9,6 +9,8 @@ public record UserDataDTO (
 
         String email,
 
+        String userPhoto,
+
         int encounters,
 
         int level,
