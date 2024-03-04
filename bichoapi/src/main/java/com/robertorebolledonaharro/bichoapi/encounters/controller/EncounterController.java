@@ -83,6 +83,17 @@ public class EncounterController {
         }
     }
 
+    @GetMapping("/myencounters/{id}")
+    public ResponseEntity<List<EncounterDTO>> findMyEncounters(
+            @RequestParam(value = "c", required = false, defaultValue = "10") int count,
+            @RequestParam(value = "p", required = false, defaultValue = "0") int page,
+            @PathVariable String id
+    ){
+
+            return ResponseEntity.ok(encounterService.findEncountersByUserId(page, count, id));
+    }
+
+
     @GetMapping("/allmarkers")
     public ResponseEntity<List<Marker>> findAllMarkers(){
 

@@ -10,6 +10,8 @@ import com.robertorebolledonaharro.bichoapi.encounters.repo.EncounterRepository;
 import com.robertorebolledonaharro.bichoapi.media.model.Media;
 import com.robertorebolledonaharro.bichoapi.user.model.User;
 import com.robertorebolledonaharro.bichoapi.user.service.UserService;
+import com.robertorebolledonaharro.bichoapi.userdata.model.UserData;
+import com.robertorebolledonaharro.bichoapi.userdata.service.UserDataService;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
@@ -29,7 +31,7 @@ public class EncounterService {
 
     private final EncounterRepository repository;
     private final  UserService userService;
-
+    private final UserDataService userDataService;
 
     public List<EncounterSimpleDTO> findMostLikedEncounters(int page, int count) {
         Pageable pageable = PageRequest.of(page, count);
@@ -106,6 +108,43 @@ public class EncounterService {
 
     }
 
+    @Transactional
+    public List<EncounterDTO> findEncountersByUserId(int page, int count, String userid) {
+
+        UserData userData = userDataService.getUserDatafromUserId(userid);
+
+
+        Pageable pageable = PageRequest.of(page, count);
+        Page<Encounter> encounterPage = repository.findAllByUserData(pageable, userData.getId());
+
+        if (encounterPage.hasContent()) {
+            return encounterPage.getContent().stream().map(
+                    encounter -> {
+
+                        List<Media> medias = getMediasByEncounterId(encounter.getId());
+
+                        if (!medias.isEmpty()) {
+                            return EncounterDTO.builder()
+                                    .id(encounter.getId())
+                                    .scientificName(encounter.getSpecie().getScientificName())
+                                    .type(encounter.getSpecie().getType())
+                                    .url(medias.get(0).getArchive())
+                                    .build();
+                        } else {
+                            return EncounterDTO.builder()
+                                    .id(encounter.getId())
+                                    .scientificName(encounter.getSpecie().getScientificName())
+                                    .type(encounter.getSpecie().getType())
+                                    .url("https://i.pinimg.com/564x/7f/bd/09/7fbd09c571f03dae5034020402d0fcf3.jpg")
+                                    .build();
+                        }
+
+                    }
+            ).toList();
+        } else {
+            throw new EncounterNotFoundException("No encounters found on page " + page);
+        }
+    }
 
     @Transactional
     public EncounterDetailDTO finEncounterDetailById(UUID id){
