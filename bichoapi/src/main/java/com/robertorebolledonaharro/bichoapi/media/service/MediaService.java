@@ -13,6 +13,14 @@ import java.util.UUID;
 public class MediaService {
 
 
+    private final MediaRepository repository;
+
+
+    public Media save(Media media){
+        return  repository.save(media);
+
+    }
+
 
 
 }

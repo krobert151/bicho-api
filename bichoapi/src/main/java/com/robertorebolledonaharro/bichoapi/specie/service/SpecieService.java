@@ -6,6 +6,7 @@ import com.robertorebolledonaharro.bichoapi.media.model.Media;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDetailsDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpeciesNameDTO;
 import com.robertorebolledonaharro.bichoapi.specie.error.SpecieNotFoundException;
 import com.robertorebolledonaharro.bichoapi.specie.model.Specie;
 import com.robertorebolledonaharro.bichoapi.specie.repo.SpecieRepository;
@@ -30,6 +31,27 @@ public class SpecieService {
 
     private final SpecieRepository repository;
 
+    public Specie getSpecieById(UUID id){
+
+        return repository.findById(id).get();
+
+    }
+
+    public List<SpeciesNameDTO> findAllNames(){
+        return  repository.findAll().stream().map(x->{
+            return SpeciesNameDTO.builder()
+                    .id(x.getId().toString())
+                    .name(x.getScientificName())
+                    .build();
+        }).toList();
+
+    }
+
+
+    public boolean findSpecieById(UUID id){
+        return  repository.existsById(id);
+
+    }
 
     public List<SpecieSimpleDTO> findSpeciesfromHome(int page, int count){
         Pageable pageable = PageRequest.of(page,count);

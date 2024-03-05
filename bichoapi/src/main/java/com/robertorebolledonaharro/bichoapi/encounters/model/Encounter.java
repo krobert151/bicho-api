@@ -16,6 +16,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 @Entity
 public class Encounter {
 
