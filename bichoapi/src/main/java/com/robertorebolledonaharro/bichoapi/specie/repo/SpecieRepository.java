@@ -2,6 +2,7 @@ package com.robertorebolledonaharro.bichoapi.specie.repo;
 
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpeciesNameDTO;
 import com.robertorebolledonaharro.bichoapi.specie.model.Specie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +30,9 @@ public interface SpecieRepository extends JpaRepository<Specie, UUID>, JpaSpecif
             WHERE e.danger >2
             """)
     Page<SpecieSimpleDTO> findSpeciesInDangerOfExtintion(Pageable pageable);
+    boolean existsById(UUID id);
+
+
 
     @Query("""
             SELECT new com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO(

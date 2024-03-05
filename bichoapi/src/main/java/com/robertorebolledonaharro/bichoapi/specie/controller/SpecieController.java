@@ -3,6 +3,7 @@ package com.robertorebolledonaharro.bichoapi.specie.controller;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieDetailsDTO;
 import com.robertorebolledonaharro.bichoapi.specie.dto.SpecieSimpleDTO;
+import com.robertorebolledonaharro.bichoapi.specie.dto.SpeciesNameDTO;
 import com.robertorebolledonaharro.bichoapi.specie.error.SpecieNotFoundException;
 import com.robertorebolledonaharro.bichoapi.specie.service.SpecieService;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -144,6 +145,12 @@ public class SpecieController {
             return ResponseEntity.ok(specieService.findAllByAdvPredicate(search));
 
         }
+    }
+
+    @GetMapping("/names")
+    public ResponseEntity<List<SpeciesNameDTO>> findAllNames(){
+        return ResponseEntity.ok(specieService.findAllNames());
+
     }
 
     @GetMapping("/speciebyid/{id}")

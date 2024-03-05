@@ -1,11 +1,9 @@
 package com.robertorebolledonaharro.bichoapi.encounters.controller;
 
 
-import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterDTO;
-import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterDetailDTO;
-import com.robertorebolledonaharro.bichoapi.encounters.dto.EncounterSimpleDTO;
-import com.robertorebolledonaharro.bichoapi.encounters.dto.Marker;
+import com.robertorebolledonaharro.bichoapi.encounters.dto.*;
 import com.robertorebolledonaharro.bichoapi.encounters.service.EncounterService;
+import com.robertorebolledonaharro.bichoapi.user.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -16,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -104,6 +103,11 @@ public class EncounterController {
     @GetMapping("/encounterdetails/{id}")
     public ResponseEntity<EncounterDetailDTO> findEncountersDetailsById(@PathVariable String id){
         return ResponseEntity.ok(encounterService.finEncounterDetailById(UUID.fromString(id)));
+    }
+
+    @PostMapping("/find/")
+    public ResponseEntity<EncounterPOST> saveEncounter(@RequestBody EncounterPOST encounterPOST, @AuthenticationPrincipal User user){
+        return ResponseEntity.status(201).body(encounterService.addEncounter(encounterPOST, user.getId().toString()));
     }
 
 
